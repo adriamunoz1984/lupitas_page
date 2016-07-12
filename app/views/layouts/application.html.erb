@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LupitasPage</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      
+      <a href="#" class="navbar-brand">Analisis Transgeneracional</a>
+      <button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%=link_to "Home", root_path%></li>
+          <li><%=link_to "Testimonials", posts_path%> </li>
+          <li><%=link_to "Precios", prices_index_path%></li>
+          <li><%=link_to "Contacto", contact_index_path%></li>
+
+           <div class="pull-right user-info">
+             <% if current_user %>
+               <span id="sign-in">Hola <%= current_user.email %>!</span>
+               <span id="sign-in"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
+             <% else %>
+               <%= link_to "Administradora", new_user_session_path %>
+               <!--<% link_to "Sign Up", new_user_registration_path %> -->
+             <% end %>
+           </div>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+    <div class="container">
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+    </div>
+
+</body>
+</html>

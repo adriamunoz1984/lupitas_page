@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Testimonials</h1>
+
+
+    <% @posts.each do |post| %>
+     <div class="content-box">
+        <h4>"<i><%= post.content %></i>"</h4>
+          <small><i>Posted by -<%= post.name %></i></small><br><br>
+
+          <% if user_signed_in?%>
+            <span class="btn btn-default"><%= link_to 'Show', post %></span>
+             <span class="btn btn-default"><%= link_to 'Edit', edit_post_path(post) %></span>
+             <span class="btn btn-default"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+           <% end %>
+          <hr>
+     </div>
+      <br><br>
+    <% end %>
+
+
+<br>
+<br>
+<span class="btn btn-default"><%= link_to 'Add Testimonial', new_post_path %></span>
